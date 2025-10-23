@@ -4,60 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>InnoWeb 2.0 — Lançamento em breve</title>
-  <meta name="description" content="InnoWeb 2.0 — A agência digital que cuida de tudo: estratégia, conteúdo, social, websites e performance. Lançamento 12/11/2025." />
+  <meta name="description" content="InnoWeb 2.0 — A agência digital que cuida de tudo: estratégia, conteúdos, social, websites e performance. Lançamento 12/11/2025." />
 
-  <!-- BASIC ICONS / OG (works even if others are missing) -->
+  <!-- Icons / Social (keep as you already uploaded) -->
   <link rel="icon" href="/favicon.ico" />
-  <meta property="og:image" content="/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/og-image.png" />
-
-  <!-- (Optional) these match your generated files -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/og-image.png" />
   <meta name="theme-color" content="#0d0d0d" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* HARD FALLBACKS so the page never looks blank */
-    html,body{height:100%}
-    body{margin:0;background:#000 !important;color:#fff !important;font-family:Poppins,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px}
-    a{color:#00bfff}
-    /* Basic layout */
-    .wrap{width:100%;max-width:900px}
-    header{display:flex;justify-content:center;margin-bottom:24px}
-    .logo{height:56px;width:auto}
-    h1{font-size:clamp(28px,5vw,44px);margin:8px 0 6px;text-align:center}
-    .sub{text-align:center;color:#b6b6b6}
-    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
-    .tile{border:1px solid #1b1b1d;border-radius:14px;padding:14px 10px;text-align:center;background:rgba(255,255,255,.04)}
-    .num{font-size:clamp(26px,6vw,52px);font-weight:700}
-    .lab{margin-top:6px;color:#b6b6b6;text-transform:uppercase;letter-spacing:.12em}
-    .social{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
-    .social a{display:inline-block;border:1px solid #1b1b1d;border-radius:10px;padding:10px 14px;text-decoration:none;color:#fff;background:rgba(255,255,255,.04)}
-    .card{border:1px solid #1b1b1d;border-radius:14px;padding:16px;background:rgba(255,255,255,.04)}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-    label{font-size:.95rem;color:#b6b6b6}
-    input,textarea{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid #1b1b1d;background:#0b0b0c;color:#fff}
-    .col-2{grid-column:span 2}
-    button{padding:12px 16px;border-radius:10px;border:1px solid rgba(0,191,255,.7);background:rgba(0,191,255,.25);color:#eaf9ff;font-weight:600;cursor:pointer}
-    footer{text-align:center;color:#8a8a8a;margin-top:18px}
-    @media (max-width:760px){form{grid-template-columns:1fr}.col-2{grid-column:auto}.countdown{grid-template-columns:repeat(2,1fr)}}
+    :root{
+      --bg:#000; --fg:#fff; --muted:#b6b6b6; --accent:#00bfff; --border:#1b1b1d;
+    }
+
+    /* Page now scrolls normally */
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      background:#000;
+      color:#fff;
+      font-family:Poppins,system-ui,sans-serif;
+      line-height:1.5;
+    }
+
+    .page{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    header{
+      display:flex; justify-content:center; align-items:center;
+      margin-top: 8px; margin-bottom: 18px;
+    }
+    .logo{ height:56px; width:auto; }
+
+    h1{
+      font-size:clamp(30px,5vw,56px);
+      text-align:center;
+      margin: 6px 0 10px;
+    }
+    .sub{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* Countdown */
+    .countdown{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(140px,1fr));
+      gap:16px;
+      margin: 22px auto 26px;
+      max-width: 1000px;
+    }
+    .tile{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+    .num{ font-size:clamp(28px,6vw,56px); font-weight:700; line-height:1; }
+    .lab{ margin-top:8px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
+
+    /* Social */
+    .social{
+      display:flex; gap:12px; justify-content:center;
+      margin-bottom: 26px;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      text-decoration:none; color:var(--fg);
+      background: rgba(255,255,255,.04);
+    }
+    .btn:hover{ border-color: rgba(0,191,255,.6); }
+
+    /* Card + Form */
+    .card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .card h2{ margin:0 0 6px; font-size: clamp(22px,3.2vw,30px); }
+    .card .sub{ margin-top: 2px; margin-bottom: 14px; }
+
+    form{
+      display:grid;
+      /* responsive columns: no more overlap */
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+    }
+
+    label{
+      display:block;              /* ensures inputs flow under labels */
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    input, textarea{
+      display:block;
+      width:100%;
+      min-width:0;                /* prevents overflowing in grid cells */
+      margin-top:6px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#0b0b0c;
+      color:#fff;
+      outline:none;
+    }
+    textarea{ resize:vertical; }
+
+    .full { grid-column: 1 / -1; } /* force full width when needed */
+
+    button{
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(0,191,255,.7);
+      background: rgba(0,191,255,.22);
+      color:#eaf9ff;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center; color:#8a8a8a; margin-top: 26px;
+    }
+
+    /* Small screens tweaks */
+    @media (max-width:520px){
+      .countdown{ grid-template-columns: repeat(2,1fr); }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <div class="page">
     <header>
-      <!-- Ensure /logo.png exists in repo root -->
       <img src="/logo.png" alt="InnoWeb 2.0" class="logo" />
     </header>
 
-    <section class="hero">
-      <h1>InnoWeb <span style="color:#00bfff">2.0</span> está a chegar</h1>
-      <p class="sub">Lançamento: <strong>12 de Novembro de 2025</strong></p>
-    </section>
+    <h1>InnoWeb <span style="color:var(--accent)">2.0</span> está a chegar</h1>
+    <p class="sub">Lançamento: <strong>12 de Novembro de 2025</strong></p>
 
     <section class="countdown" aria-label="Contagem decrescente">
       <div class="tile"><div class="num" id="dd">--</div><div class="lab">Dias</div></div>
@@ -67,14 +168,14 @@
     </section>
 
     <div class="social">
-      <a href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/SUA_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://www.linkedin.com/company/SUA_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 6px">Queres ser avisado e falar connosco?</h2>
+    <section class="card" aria-labelledby="lead-title">
+      <h2 id="lead-title">Queres ser avisado e falar connosco?</h2>
       <p class="sub">Deixa os teus dados e a equipa entra em contacto.</p>
-      <!-- Replace the action with your Formspree endpoint -->
+
       <form id="leadForm" action="https://formspree.io/f/SEU_ENDPOINT" method="POST">
         <div>
           <label for="nome">Nome</label>
@@ -84,24 +185,26 @@
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" required />
         </div>
-        <div class="col-2">
+        <div class="full">
           <label for="contacto">Contacto (WhatsApp ou Email)</label>
           <input id="contacto" name="contacto" required placeholder="+244 ... ou email@exemplo.com" />
         </div>
-        <div class="col-2">
+        <div class="full">
           <label for="mensagem">Mensagem (opcional)</label>
           <textarea id="mensagem" name="mensagem" rows="4"></textarea>
         </div>
         <input type="hidden" name="_redirect" value="/sucesso.html" />
-        <button type="submit" class="col-2">Quero ser contactado</button>
+        <div class="full">
+          <button type="submit">Quero ser contactado</button>
+        </div>
       </form>
-    </div>
+    </section>
 
     <footer>© 2025 InnoWeb Soluções</footer>
-  </main>
+  </div>
 
   <script>
-    // Countdown to 12 Nov 2025 00:00 Angola time (UTC+1)
+    // Countdown to 12 Nov 2025 00:00 in Angola (UTC+1)
     const target = new Date('2025-11-12T00:00:00+01:00').getTime();
     const $ = id => document.getElementById(id);
     function tick(){

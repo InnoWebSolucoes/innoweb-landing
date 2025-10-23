@@ -1,67 +1,298 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InnoWeb 2.0 — Lançamento em breve</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>InnoWeb 2.0 — Lançamento em breve</title>
 
-      body {
-        background-color: #000;
-        color: #fff;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-      h1 {
-        font-size: 3rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
+  <style>
+    :root{
+      --bg:#000000;
+      --fg:#ffffff;
+      --muted:#b6b6b6;
+      --accent:#00bfff; /* Tech Blue */
+      --card:#0f0f10;
+      --border:#1b1b1d;
+      --ok:#12d48b;
+      --err:#ff6b6b;
+    }
 
-      p {
-        font-size: 1.2rem;
-        color: #ccc;
-        margin-top: 1rem;
-      }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(0,191,255,.15), transparent 60%),
+        radial-gradient(1200px 600px at -10% 110%, rgba(0,191,255,.12), transparent 60%),
+        var(--bg);
+      display:flex; align-items:center; justify-content:center;
+      padding:32px;
+    }
 
-      .date {
-        color: #00bfff;
-        font-weight: bold;
-      }
+    .wrap{
+      width:100%;
+      max-width:980px;
+    }
 
-      footer {
-        position: absolute;
-        bottom: 20px;
-        font-size: 0.9rem;
-        color: #555;
-      }
+    header{
+      display:flex; align-items:center; justify-content:center; gap:12px;
+      margin-bottom:32px;
+    }
+    .logo{
+      height:56px; width:auto; display:block;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,.5));
+    }
 
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 2rem;
+    .hero{
+      text-align:center;
+      margin-bottom:28px;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.9rem; color:var(--muted); letter-spacing:.3px;
+      backdrop-filter: blur(6px);
+    }
+    h1{
+      font-size:clamp(28px, 5vw, 48px);
+      font-weight:700; margin:14px 0 8px;
+    }
+    .sub{
+      color:var(--muted); font-size:1.05rem;
+    }
+    .date{
+      color:var(--accent); font-weight:600;
+    }
+
+    /* COUNTDOWN */
+    .countdown{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+      margin:28px 0 34px;
+    }
+    .tile{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px 12px;
+      text-align:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    .num{
+      font-size:clamp(28px, 6vw, 56px);
+      font-weight:700;
+      line-height:1;
+      letter-spacing:1px;
+    }
+    .lab{
+      margin-top:8px;
+      font-size:.95rem; color:var(--muted);
+      text-transform:uppercase; letter-spacing:.12em;
+    }
+
+    /* SOCIAL */
+    .social{
+      display:flex; gap:12px; justify-content:center; margin-bottom:28px;
+    }
+    .social a{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 14px;
+      text-decoration:none; color:var(--fg); font-weight:500;
+      display:inline-flex; align-items:center; gap:8px;
+      transition: transform .15s ease, border-color .15s ease;
+      background: rgba(255,255,255,.02);
+    }
+    .social a:hover{ transform: translateY(-2px); border-color:rgba(0,191,255,.5) }
+    .social svg{ width:18px; height:18px }
+
+    /* FORM */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    form{
+      display:grid; grid-template-columns:1fr 1fr; gap:14px;
+      margin-top:10px;
+    }
+    .col-2{ grid-column: span 2 }
+    label{ font-size:.9rem; color:var(--muted) }
+    input, textarea{
+      margin-top:6px;
+      width:100%;
+      padding:14px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#0b0b0c; color:var(--fg);
+      outline:none;
+    }
+    input:focus, textarea:focus{ border-color: rgba(0,191,255,.6) }
+    button{
+      padding:14px 18px; border-radius:12px; border:1px solid rgba(0,191,255,.7);
+      background: linear-gradient(180deg, rgba(0,191,255,.25), rgba(0,191,255,.18));
+      color:#eaf9ff; font-weight:600; letter-spacing:.3px;
+      cursor:pointer; transition: transform .15s ease, box-shadow .15s ease;
+    }
+    button:hover{ transform: translateY(-1px); box-shadow:0 8px 24px rgba(0,191,255,.25) }
+
+    .note{ color:var(--muted); font-size:.9rem; margin-top:10px }
+    .msg{ margin-top:12px; font-size:.95rem; font-weight:500 }
+    .msg.ok{ color:var(--ok) }
+    .msg.err{ color:var(--err) }
+
+    footer{
+      text-align:center; color:#7c7c7c; font-size:.9rem; margin-top:26px;
+    }
+
+    @media (max-width:760px){
+      form{ grid-template-columns:1fr; }
+      .col-2{ grid-column: auto }
+      .countdown{ grid-template-columns:repeat(2,1fr) }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <!-- Replace /logo.png with your actual path -->
+      <img src="/logo.png" alt="InnoWeb 2.0" class="logo" />
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">Lançamento</span>
+      <h1>InnoWeb <span style="color:var(--accent)">2.0</span> está a chegar</h1>
+      <p class="sub">Data oficial: <span class="date">12 de Novembro de 2025</span> — nova era de criatividade e performance digital.</p>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown" id="countdown">
+      <div class="tile"><div class="num" id="dd">--</div><div class="lab">Dias</div></div>
+      <div class="tile"><div class="num" id="hh">--</div><div class="lab">Horas</div></div>
+      <div class="tile"><div class="num" id="mm">--</div><div class="lab">Minutos</div></div>
+      <div class="tile"><div class="num" id="ss">--</div><div class="lab">Segundos</div></div>
+    </section>
+
+    <!-- SOCIAL -->
+    <div class="social">
+      <a href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank" rel="noopener">
+        <!-- Instagram icon -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm6.5-.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z" stroke="currentColor" stroke-width="1.4"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.linkedin.com/company/SUA_LINKEDIN" target="_blank" rel="noopener">
+        <!-- LinkedIn icon -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05A4.16 4.16 0 0 1 18 8.9c3.07 0 3.64 2.02 3.64 4.66V21H18v-6c0-1.43-.03-3.26-1.98-3.26-1.98 0-2.28 1.55-2.28 3.15V21H10V9Z" fill="currentColor"/></svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <!-- FORM -->
+    <div class="card">
+      <h2 style="margin:0 0 4px">Queres ser avisado e falar connosco?</h2>
+      <p class="sub">Deixa os teus dados e a equipa entra em contacto.</p>
+
+      <!-- Replace the action URL with your Formspree endpoint -->
+      <form id="leadForm" action="https://formspree.io/f/SEU_ENDPOINT" method="POST">
+        <div>
+          <label>Nome
+            <input type="text" name="nome" placeholder="O teu nome" required>
+          </label>
+        </div>
+        <div>
+          <label>Empresa
+            <input type="text" name="empresa" placeholder="Nome da empresa" required>
+          </label>
+        </div>
+        <div class="col-2">
+          <label>Contacto (WhatsApp ou Email)
+            <input type="text" name="contacto" placeholder="+244 ... ou email@exemplo.com" required>
+          </label>
+        </div>
+        <div class="col-2">
+          <label>Mensagem (opcional)
+            <textarea name="mensagem" rows="4" placeholder="Fala-nos rapidamente do teu objetivo"></textarea>
+          </label>
+        </div>
+
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="col-2" style="display:flex; gap:12px; align-items:center;">
+          <button type="submit">Quero ser contactado</button>
+          <span class="note">Respondemos em 24–48h úteis.</span>
+        </div>
+
+        <div id="formMsg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <footer>© 2025 InnoWeb Soluções — Criatividade + Performance</footer>
+  </div>
+
+  <script>
+    // === Countdown (target is Angola time: UTC+1 at 00:00) ===
+    const target = new Date('2025-11-12T00:00:00+01:00').getTime();
+    const dd = document.getElementById('dd');
+    const hh = document.getElementById('hh');
+    const mm = document.getElementById('mm');
+    const ss = document.getElementById('ss');
+
+    function updateCountdown(){
+      const now = Date.now();
+      let diff = Math.max(0, target - now);
+
+      const d = Math.floor(diff / (1000*60*60*24)); diff -= d*(1000*60*60*24);
+      const h = Math.floor(diff / (1000*60*60));     diff -= h*(1000*60*60);
+      const m = Math.floor(diff / (1000*60));        diff -= m*(1000*60);
+      const s = Math.floor(diff / 1000);
+
+      dd.textContent = String(d).padStart(2,'0');
+      hh.textContent = String(h).padStart(2,'0');
+      mm.textContent = String(m).padStart(2,'0');
+      ss.textContent = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // === Form handling (Formspree) ===
+    const form = document.getElementById('leadForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      msg.textContent = "A enviar...";
+      msg.className = "msg";
+      try{
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        if(res.ok){
+          msg.textContent = "Obrigado! Recebemos os teus dados — entraremos em contacto.";
+          msg.className = "msg ok";
+          form.reset();
+        } else {
+          msg.textContent = "Ocorreu um erro ao enviar. Tenta novamente ou fala connosco via Instagram.";
+          msg.className = "msg err";
         }
-        p {
-          font-size: 1rem;
-        }
+      }catch(err){
+        msg.textContent = "Sem ligação ou erro temporário. Tenta novamente.";
+        msg.className = "msg err";
       }
-    </style>
-  </head>
-  <body>
-    <h1>🚀 InnoWeb 2.0 está a chegar</h1>
-    <p>Lançamento oficial em <span class="date">12 de Novembro de 2025</span></p>
-    <p>Prepara-te para uma nova era de criatividade e performance digital.</p>
-
-    <footer>© 2025 InnoWeb Soluções</footer>
-  </body>
+    });
+  </script>
+</body>
 </html>
+

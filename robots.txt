@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://innoweb-landing.vercel.app/sitemap.xml
